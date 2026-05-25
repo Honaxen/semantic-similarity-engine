@@ -58,7 +58,16 @@ represent sentences in vector space.
 
 ## What I Learned
 
-TBD — will be updated after all versions are complete.
+TF-IDF measures word overlap, not meaning.
+Two sentences can be semantically identical but score 0.00 similarity
+if they share no words — "Machine learning" vs "AI systems".
+
+SBERT solves this by mapping sentences to a space where meaning = proximity.
+Fine-tuning on sentence pairs is what makes the difference,
+not just the transformer architecture itself.
+
+Mean pooling consistently outperforms CLS token for similarity tasks
+because it captures the full sentence, not just the classification token.
 
 ---
 
@@ -73,6 +82,20 @@ TBD — will be updated after all versions are complete.
 ## Stack
 
 Python · scikit-learn · sentence-transformers · matplotlib
+
+## Usage
+
+```python
+from src.similarity import TFIDFSimilarity, SBERTSimilarity
+
+# TF-IDF baseline
+tfidf = TFIDFSimilarity()
+results = tfidf.query("machine learning", corpus, top_n=3)
+
+# SBERT semantic similarity
+sbert = SBERTSimilarity()
+results = sbert.query("machine learning", corpus, top_n=3)
+```
 
 ---
 
