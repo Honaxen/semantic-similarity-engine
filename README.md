@@ -56,6 +56,28 @@ represent sentences in vector space.
 
 ---
 
+## Getting Started
+
+### Run locally
+```bash
+pip install -r requirements.txt
+cd api
+uvicorn main:app --reload
+```
+
+### Run with Docker
+```bash
+docker build -t semantic-similarity-engine .
+docker run -p 8000:8000 semantic-similarity-engine
+```
+
+### Run tests
+```bash
+pytest tests/test_api.py -v
+```
+
+---
+
 ## What I Learned
 
 TF-IDF measures word overlap, not meaning.
