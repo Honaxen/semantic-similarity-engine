@@ -8,7 +8,7 @@ Run with:
 """
 
 from fastapi import FastAPI
-from routers import search, health
+from api.routers import search, health
 
 app = FastAPI(
     title="Semantic Similarity Engine",
@@ -24,7 +24,7 @@ app.include_router(search.router, prefix="/search", tags=["Search"])
 @app.get("/")
 async def root():
     return {
-        "name": "Semantic Search Engine",
+        "name": "Semantic Similarity Engine",
         "version": "1.0.0",
         "docs": "/docs"
     }
