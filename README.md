@@ -36,6 +36,11 @@ TF-IDF fails here. Embeddings don't.
 
 ```
 semantic-similarity-engine/
+├── api/
+│   ├── main.py
+│   └── routers/
+│       ├── health.py
+│       └── search.py
 ├── notebooks/
 │   ├── 01_tfidf_baseline.ipynb
 │   ├── 02_sentence_embeddings.ipynb
@@ -43,7 +48,10 @@ semantic-similarity-engine/
 │   └── 04_comparison.ipynb
 ├── src/
 │   └── similarity.py
-├── data/
+├── tests/
+│   └── test_api.py
+├── Dockerfile
+├── requirements.txt
 └── README.md
 ```
 
@@ -90,6 +98,16 @@ not just the transformer architecture itself.
 
 Mean pooling consistently outperforms CLS token for similarity tasks
 because it captures the full sentence, not just the classification token.
+
+---
+
+## Results
+
+| Method | Within-Group Similarity | Between-Group Similarity |
+|--------|------------------------|--------------------------|
+| TF-IDF | 0.00 - 0.14 | ~0.00 |
+| SBERT | 0.31 - 0.64 | ~0.05 |
+| DistilBERT Mean | 0.78 - 0.90 | ~0.57 |
 
 ---
 
